@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,200;0,400;0,600;0,800;1,100;1,200;1,400;1,600;1,800&display=swap');
+
+
+
+
+
+
+header a {
+    
+    color: #7fff00;
+}
+
+.nav-box{
+    background: linear-gradient(0.25turn, #2B2B2B,#2B2B2B, #A49DA5, 50%,#A49DA5,#2B2B2B, #2B2B2B);
+}
+
+.menu-a a:hover {
+    background: linear-gradient(#2B2B2B,#A49DA5);
+
+}
+
+
+#title{
+    color: #7fff00;
+    font-family: 'Work Sans', sans-serif;
+
+}
+
+
+
+
+
+.menu2 {
+    font-family: var(--fonte-secundaria);
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+
