@@ -3,27 +3,55 @@
 
 
 
-<header>
-  <nav class=" nav-box navbar navbar-expand-lg navbar-light">
-    <div class="menu container-fluid justify-content-center">
-      <div>
-        <a id="title" class="navbar-brand" href="#">
-          <img src="https://m.media-amazon.com/images/I/712AL8mRJvL.png" alt="" width="40" height="34" class="d-inline-block align-text-center">
-        Conversor de Moedas
-        </a>
+<div class="container mt-3">
 
+  <nav class="nav-box navbar">
+    <div class="container justify-content-center">
+      <div>
+        <a id="title" class="navbar-brand" href="/" routerLink="/">
+          <img
+            src="https://m.media-amazon.com/images/I/712AL8mRJvL.png"
+            alt="logo"
+            width="34"
+            height="32"
+            class="d-inline-block align-text-center"
+          />
+          Conversor de Moedas
+        </a>
       </div>
-        <div class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Menu
-            </a>
-            <ul class="menu-a dropdown-menu bg-transparent" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Listar Moedas</a></li>
-              <li><a class="dropdown-item" href="#">Converter</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Histórico</a></li>
-            </ul>
-          </div>
+      <div class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          id="navbarDropdown"
+          role="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <i class="material-icons">menu</i>
+        </a>
+        <ul
+          class="menu-a dropdown-menu"
+          aria-labelledby="navbarDropdown"
+        >
+          <li>
+            <a class="dropdown-item" href="#listagem" routerLink="/listagem">
+              <i class="menu-icon material-icons">list</i>Listar Moedas</a
+            >
+          </li>
+          <li>
+            <a class="dropdown-item" href="#converter"
+              ><i class="menu-icon material-icons">autorenew</i>Converter</a
+            >
+          </li>
+          <li><hr class="dropdown-divider" /></li>
+          <li>
+            <a class="dropdown-item" href="#historico"
+              ><i class="menu-icon material-icons">history</i>Histórico</a
+            >
+          </li>
+        </ul>
+      </div>
     </div>
   </nav>
-</header>
+</div>

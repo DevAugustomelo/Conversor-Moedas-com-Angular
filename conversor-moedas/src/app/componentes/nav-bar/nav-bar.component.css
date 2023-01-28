@@ -5,38 +5,47 @@
 
 
 
-header a {
-    
+
+.nav-box {
+    background: linear-gradient(0.25turn, #2B2B2B, #2B2B2B, #A49DA5, 50%, #A49DA5, #2B2B2B, #2B2B2B);
+    height: 4rem;    
+}
+
+
+.nav-box a {
+
     color: #7fff00;
 }
 
-.nav-box{
-    background: linear-gradient(0.25turn, #2B2B2B,#2B2B2B, #A49DA5, 50%,#A49DA5,#2B2B2B, #2B2B2B);
+
+.menu-a {
+    /* background: linear-gradient(0.25turn, #2B2B2B, #2B2B2B, #A49DA5, 50%, #A49DA5, #2B2B2B, #2B2B2B); */
+    background: #A49DA5;
 }
+
 
 .menu-a a:hover {
-    background: linear-gradient(#2B2B2B,#A49DA5);
+    background: linear-gradient(#2B2B2B, #A49DA5);
 
 }
 
 
-#title{
+#title {
     color: #7fff00;
     font-family: 'Work Sans', sans-serif;
 
 }
 
 
-
-
-
-.menu2 {
-    font-family: var(--fonte-secundaria);
-    white-space: nowrap;
+.menu-a a {
     display: flex;
+    justify-content: flex-start;
     align-items: center;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
+
 }
 
 
+.menu-icon {
+    font-size: 1.4rem;
+    padding-right: 10px;
+}

@@ -3,42 +3,39 @@
 
 
 
+<div class="app container p-3 mb-5 rounded">
 
-<section class="principal p-3 mb-5 rounded">
-  <nav class="nav">
-    <app-nav-bar></app-nav-bar>
-  </nav>
+    <header>
+        <app-nav-bar></app-nav-bar>
+    </header>
 
-  <article class="main-box">
-    <div class="img-main">
-      <img src="https://media.istockphoto.com/id/658494728/photo/main-currencies-symbols.jpg?s=612x612&w=0&k=20&c=w1tezIFh0K3kPVCuQ_oMbDxqe6kmRu9cikhN9ir1HcQ="
-       alt="img-fundo">
+    <main>
+        <router-outlet></router-outlet>
+    </main>
 
-       <div class="text">
-         
-         <h2>Conversor de Moedas - Desafio#4</h2> 
-  
-          <p class="text-shadow">
-            Projeto do Programa de Residência em Desenvolvimento de Software
-            da <strong>iUUL</strong>. O objetivo é praticar aplicação com o Framework Angular
-            consumindo a APi<a href="https://exchangerate.host/" target="_blank" style="color: #fffb07; "><strong> exchangerate</strong></a>.
-          </p>
-       </div>
-    </div>
+
+    <!-- Área de exibição -->
+
+    <!-- <section>
+
+        
+        <div class="label-item">
+        <mat-tab-group class="bg-text" mat-stretch-tabs="false" mat-align-tabs="center">
+                <mat-tab id="listagem" label="Listagem">
+                    Listagem
+                    <app-listar-moedas></app-listar-moedas>  
+                </mat-tab>
+                <mat-tab id="converter" label="Conversor">Conversor</mat-tab>
+                <mat-tab id="historico" label="Histórico">Histórico</mat-tab>
+                
+            </mat-tab-group>
+        </div>
+
+
+    </section> -->
+
 
     
-  </article>
+</div>
 
-  <div class="mt-5">
-    <h2>Tamanho</h2>
-    <span class="text-shadow">
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis
-      reiciendis, veritatis asperiores a totam porro, quis voluptas doloribus,
-      harum aliquam officia. Quaerat suscipit adipisci veniam eveniet inventore
-      quod provident quibusdam ullam id, aut mollitia modi minima! Error cum
-      soluta eum.
-    </span>
-  </div>
-</section>
 
-<router-outlet></router-outlet>

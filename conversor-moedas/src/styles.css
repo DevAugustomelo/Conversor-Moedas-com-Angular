@@ -4,6 +4,8 @@
 
 
 * {
+
+    --primary-green: #7fff00;
     
     
 
@@ -29,6 +31,11 @@ body {
     border-radius: 8px;
     box-shadow: 1px 3px 8px #70757A;
     
+ }
+
+
+ .v-center {
+    vertical-align: middle;
  }
 
 
