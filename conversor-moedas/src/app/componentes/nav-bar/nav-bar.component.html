@@ -4,7 +4,6 @@
 
 
 <div class="container mt-3">
-
   <nav class="nav-box navbar">
     <div class="container justify-content-center">
       <div>
@@ -30,25 +29,20 @@
         >
           <i class="material-icons">menu</i>
         </a>
-        <ul
-          class="menu-a dropdown-menu"
-          aria-labelledby="navbarDropdown"
-        >
+        <ul class="menu-a dropdown-menu" aria-labelledby="navbarDropdown">
           <li>
-            <a class="dropdown-item" href="#listagem" routerLink="/listagem">
-              <i class="menu-icon material-icons">list</i>Listar Moedas</a
-            >
-          </li>
-          <li>
-            <a class="dropdown-item" href="#converter" routerLink="/conversor"
-              ><i class="menu-icon material-icons">autorenew</i>Converter</a
-            >
+            <a class="dropdown-item" href="#listagem" routerLink="/listagem" routerLinkActive="active">
+              <i class="menu-icon material-icons">list</i>Listar Moedas</a>
           </li>
           <li><hr class="dropdown-divider" /></li>
           <li>
-            <a class="dropdown-item" href="#historico" routerLink="/historico"
-              ><i class="menu-icon material-icons">history</i>Histórico</a
-            >
+            <a class="dropdown-item" href="#converter" routerLink="/conversor" routerLinkActive="active">
+              <i class="menu-icon material-icons">autorenew</i>Converter</a>
+          </li>
+          <li><hr class="dropdown-divider" /></li>
+          <li>
+            <a class="dropdown-item" href="#historico" routerLink="/historico" routerLinkActive="active">
+              <i class="menu-icon material-icons">history</i>Histórico</a>
           </li>
         </ul>
       </div>

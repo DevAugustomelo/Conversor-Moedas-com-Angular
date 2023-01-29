@@ -17,6 +17,7 @@ import { ListarMoedasComponent } from './componentes/listar-moedas/listar-moedas
 import { PrincipalComponent } from './componentes/principal/principal.component';
 import { ConversorComponent } from './componentes/conversor/conversor.component';
 import { HistoricoComponent } from './componentes/historico/historico.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { HistoricoComponent } from './componentes/historico/historico.component'
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
     MatToolbarModule,

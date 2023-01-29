@@ -65,3 +65,16 @@
     color: var(--primary-green);
 
 }
+
+.card-body {
+  background: #464545;
+}
+
+
+@media (max-width: 470px) {
+
+  .text {
+    top: 50px;
+  }
+
+}

@@ -49,3 +49,16 @@
     font-size: 1.4rem;
     padding-right: 10px;
 }
+
+
+.active {
+    background: #2B2B2B;
+    transition: 300ms ease-in;
+}
+
+
+@media (max-width: 769px) {
+    .container {
+        flex-direction: column;
+    }
+}
