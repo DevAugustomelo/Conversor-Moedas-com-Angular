@@ -17,9 +17,9 @@ export class ListarMoedasComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.service.listar().subscribe((listaMoedas) => {
-      console.log(listaMoedas)
-    });
+    // this.service.listar().subscribe((listaMoedas) => {
+    //   console.log(listaMoedas)
+    // });
 
   }
 

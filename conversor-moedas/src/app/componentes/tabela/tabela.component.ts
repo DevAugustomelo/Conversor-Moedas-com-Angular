@@ -2,7 +2,8 @@ import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
-import { TabelaDataSource, TabelaItem } from './tabela-datasource';
+import { MoedasList } from '../moedasList';
+import { TabelaDataSource } from './tabela-datasource';
 
 @Component({
   selector: 'app-tabela',
@@ -12,11 +13,11 @@ import { TabelaDataSource, TabelaItem } from './tabela-datasource';
 export class TabelaComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  @ViewChild(MatTable) table!: MatTable<TabelaItem>;
+  @ViewChild(MatTable) table!: MatTable<MoedasList>;
   dataSource: TabelaDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name'];
+  displayedColumns = ['cod', 'desc'];
 
   constructor() {
     this.dataSource = new TabelaDataSource();

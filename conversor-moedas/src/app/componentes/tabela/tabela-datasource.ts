@@ -3,29 +3,34 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
+import { MoedasList } from '../moedasList';
+import { listarMoedas } from 'src/app/services/cotacao.service';
 
-// TODO: Replace this with your own data model type
-export interface TabelaItem {
-  code: string;
-  description: string;
-}
+
+
+
+
+let MOEDAS_TABLE: MoedasList[] = []
+
+MOEDAS_TABLE = listarMoedas()
+
+
+
 
 // TODO: replace this with real data from your application
-const EXAMPLE_DATA: TabelaItem[] = [
-  {code: 'EUR', description: 'euro'},
-  {code: 'USD', description: 'dolar'},
-  {code: 'FCD', description: 'flasjflkjalksf'},
-  {code: 'BRL', description: 'real brasileiro'},
-  {code: 'ALL', description: 'ALLNATIONS'},
-];
+// let MOEDAS_TABLE: any[] = []
+//   {code: 'EUR', description: 'euro'},
+//   {code: 'USD', description: 'dolar'},
+
+// ];
 
 /**
  * Data source for the Tabela view. This class should
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class TabelaDataSource extends DataSource<TabelaItem> {
-  data: TabelaItem[] = EXAMPLE_DATA;
+export class TabelaDataSource extends DataSource<MoedasList> {
+  data: MoedasList[] = MOEDAS_TABLE;
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
 
@@ -33,12 +38,14 @@ export class TabelaDataSource extends DataSource<TabelaItem> {
     super();
   }
 
+
+
   /**
    * Connect this data source to the table. The table will only update when
    * the returned stream emits new items.
    * @returns A stream of the items to be rendered.
    */
-  connect(): Observable<TabelaItem[]> {
+  connect(): Observable<MoedasList[]> {
     if (this.paginator && this.sort) {
       // Combine everything that affects the rendered data into one update
       // stream for the data-table to consume.
@@ -61,7 +68,7 @@ export class TabelaDataSource extends DataSource<TabelaItem> {
    * Paginate the data (client-side). If you're using server-side pagination,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getPagedData(data: TabelaItem[]): TabelaItem[] {
+  private getPagedData(data: MoedasList[]): MoedasList[] {
     if (this.paginator) {
       const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
       return data.splice(startIndex, this.paginator.pageSize);
@@ -74,7 +81,7 @@ export class TabelaDataSource extends DataSource<TabelaItem> {
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getSortedData(data: TabelaItem[]): TabelaItem[] {
+  private getSortedData(data: MoedasList[]): MoedasList[] {
     if (!this.sort || !this.sort.active || this.sort.direction === '') {
       return data;
     }
@@ -82,8 +89,8 @@ export class TabelaDataSource extends DataSource<TabelaItem> {
     return data.sort((a, b) => {
       const isAsc = this.sort?.direction === 'asc';
       switch (this.sort?.active) {
-        case 'name': return compare(a.description, b.description, isAsc);
-        case 'id': return compare(+a.code, +b.code, isAsc);
+        case 'desc': return compare(a.description, b.description, isAsc);
+        case 'cod': return compare(+a.code, +b.code, isAsc);
         default: return 0;
       }
     });
