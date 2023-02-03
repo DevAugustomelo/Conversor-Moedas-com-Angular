@@ -13,13 +13,10 @@ import { CotacaoService } from 'src/app/services/cotacao.service';
 export class ListarMoedasComponent implements OnInit {
 
 
-  constructor(private service: CotacaoService) {}
+  constructor() {}
 
   ngOnInit(): void {
 
-    // this.service.listar().subscribe((listaMoedas) => {
-    //   console.log(listaMoedas)
-    // });
 
   }
 

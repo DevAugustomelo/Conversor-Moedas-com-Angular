@@ -7,10 +7,15 @@
 
     <h1>Conversor de Moedas</h1> 
     <hr>
+    <div class="serch-box">
+        <input 
+        type="text"
+        id="input-class"
+        placeholder="pesquisar">
+    </div>
     <div class="conversor" >
 
         <div>
-
             <mat-form-field appearance="outline">
                 <mat-label>DE Moeda</mat-label>
                 <mat-select [(value)]="moedaDe">
@@ -19,6 +24,8 @@
             </mat-form-field>
             <span>{{moedaDe}}</span>
         </div>
+
+
 
         <div>
 

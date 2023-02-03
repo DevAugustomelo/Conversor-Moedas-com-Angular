@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CotacaoService } from 'src/app/services/cotacao.service';
+import { CotacaoService, listarMoedas } from 'src/app/services/cotacao.service';
 import { MoedaComponent } from '../moeda/moeda.component';
 import { MoedasList } from '../moedasList';
 
@@ -12,41 +12,23 @@ export class ConversorComponent implements OnInit {
 
 
   
-
+  moeda = '';
+  // moedasLi: MoedasList[] = listarMoedas()
+  moedasLi: any[] = []
+  
+  moedaDe = "";
+  moedaPara ="";
+  
 
   constructor(private service: CotacaoService) {}
 
-
-  moeda = '';
-  // moedasList: MoedasList[] = [];
-
-
-  moedasLi: any[] = []
-    // {
-    //   code:'EUR',
-    //   description: 'euro'
-    // },
-
-    // {
-    //   code: 'USD',
-    //   description: 'dolar'
-    // }
-    
-    // ];
-  moedaDe = "";
-  moedaPara ="";
-
-
-  ngOnInit() {
-    this.service.listar().subscribe(moeda =>{
-      this.moedasLi = Object.values(moeda.symbols);
-        console.log(this.moedasLi);
-      
-      // this.moedasLi.push(resposta)
-      // console.log(this.moedasLi)
-    })
+  
+  ngOnInit(): void {
+    this.service.listar()
+    .subscribe(moeda => this.moedasLi = Object.values(moeda))
+    console.log(this.moedasLi)
   }
-
-
-
+  
+  
+  
 }
