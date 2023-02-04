@@ -3,40 +3,94 @@
 
 
 
-<section class="lista container pt-3">
+<section class="conversor container pt-3">
+  <mat-card-title>
+    <h1>Conversor de Moedas</h1>
+    <hr />
+  </mat-card-title>
 
-    <h1>Conversor de Moedas</h1> 
-    <hr>
-    <div class="serch-box">
-        <input 
-        type="text"
-        id="input-class"
-        placeholder="pesquisar">
+  <div class="input-valor">
+    <div>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Informe o valor</mat-label>
+          <input
+            matInput
+            type="number"
+            min="1"
+            class="example-right-align"
+            placeholder="0"
+            [(ngModel)]="valorEscolhido"
+          />
+          <span matTextPrefix>$&nbsp;</span>
+          <span matTextSuffix>.00</span>
+          <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+        </mat-form-field>
+      </p>
     </div>
-    <div class="conversor" >
+    <div></div>
+  </div>
 
-        <div>
-            <mat-form-field appearance="outline">
-                <mat-label>DE Moeda</mat-label>
-                <mat-select [(value)]="moedaDe">
-                    <mat-option *ngFor="let moeda of moedasLi" [value]="moeda.code">{{moeda.code}}</mat-option>
-                </mat-select>
-            </mat-form-field>
-            <span>{{moedaDe}}</span>
-        </div>
+  <div class="select">
+    <div>
+      <!-- <div class="serch-box">
+        <input type="text" id="input-class" placeholder="pesquisar" />
+      </div> -->
+      <!-- <div class="autocomplete">
+                    <form class="example-form">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                          <mat-label>Buscador</mat-label>
+                          <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
+                          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                              {{option.code}}
+                            </mat-option>
+                          </mat-autocomplete>
+                        </mat-form-field>
+                      </form>
+                      
+                </div>  -->
 
-
-
-        <div>
-
-            <mat-form-field appearance="outline">
-                <mat-label>PARA Moeda</mat-label>
-                <mat-select [(value)]="moedaPara">
-                    <mat-option *ngFor="let moeda of moedasLi" [value]="moeda.code">{{moeda.code}}</mat-option>
-                </mat-select>
-            </mat-form-field>
-            <span>{{moedaPara}}</span>
-        </div>    
+      <mat-form-field appearance="outline">
+        <mat-label><mat-card-title>DE Moeda</mat-card-title></mat-label>
+        <mat-select [(value)]="moedaDe">
+          <mat-option
+            class="option"
+            *ngFor="let moeda of moedasLi"
+            [value]="moeda.code"
+            >{{ moeda.code }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
     </div>
-    
+
+    <div id="btn-converter">
+      <button mat-fab matTooltip="Converter" color="warn" [value]="converter">
+        <mat-icon>swap_horiz</mat-icon>
+      </button>
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label><mat-card-title>PARA Moeda</mat-card-title></mat-label>
+        <mat-select [(value)]="moedaPara">
+          <mat-option
+            class="option"
+            *ngFor="let moeda of moedasLi"
+            [value]="moeda.code"
+            >{{ moeda.code }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <mat-card-content>
+    <h2>
+      Valor Convertido: {{ valorEscolhido }} {{ moedaDe }} =
+      {{ valorConvertido }} {{ moedaPara }}
+    </h2>
+    <hr />
+    <h2>Taxa de Conversão: {{ taxa }}</h2>
+  </mat-card-content>
 </section>

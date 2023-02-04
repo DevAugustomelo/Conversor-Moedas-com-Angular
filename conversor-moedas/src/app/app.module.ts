@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+
+
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
@@ -19,6 +21,7 @@ import { ConversorComponent } from './componentes/conversor/conversor.component'
 import { HistoricoComponent } from './componentes/historico/historico.component';
 import { TabelaComponent } from './componentes/tabela/tabela.component';
 import { MoedaComponent } from './componentes/moeda/moeda.component';
+
 
 
 
