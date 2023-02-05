@@ -65,7 +65,7 @@
     </div>
 
     <div id="btn-converter">
-      <button mat-fab matTooltip="Converter" color="warn" [value]="converter">
+      <button mat-fab matTooltip="Converter" color="warn" (click)="converter()">
         <mat-icon>swap_horiz</mat-icon>
       </button>
     </div>
@@ -85,12 +85,29 @@
     </div>
   </div>
 
-  <mat-card-content>
-    <h2>
-      Valor Convertido: {{ valorEscolhido }} {{ moedaDe }} =
-      {{ valorConvertido }} {{ moedaPara }}
-    </h2>
-    <hr />
-    <h2>Taxa de Conversão: {{ taxa }}</h2>
-  </mat-card-content>
+  <mat-card class="info">
+    <mat-card-content>
+
+      <h2>Valor Convertido:</h2>
+      <hr>
+      <h2 > <strong style="color:#DD2C00">{{ valorEscolhido }}</strong>   
+        {{ moedaDe }}
+      </h2>
+      
+      <h2> = </h2>
+      
+      <div>
+
+        <h2> <strong style="color:#DD2C00">{{ valorConvertido }}</strong> {{ moedaPara }}</h2>
+      </div>
+        
+         
+  
+      <hr>
+    </mat-card-content>
+    <mat-card-content>
+
+      <h2>Taxa de Conversão: {{ taxa }}</h2>
+    </mat-card-content>
+  </mat-card>
 </section>

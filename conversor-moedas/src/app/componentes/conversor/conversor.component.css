@@ -54,3 +54,11 @@ input.example-right-align {
 .option {
     background-color: var(--bg-table);
 }
+
+
+
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

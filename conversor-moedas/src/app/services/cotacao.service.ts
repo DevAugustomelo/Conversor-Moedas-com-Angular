@@ -21,6 +21,15 @@ export class CotacaoService {
   listar() {
     return this.http.get<any>(this.API);
   }
+
+  cotacao(de:string, para:string, quantidade:number) {
+    const request = `https://api.exchangerate.host/convert?from=${de}&to=${para}&amount=${quantidade}`;
+
+    return this.http.get<any>(request)
+
+    
+
+  }
 }
 
 
