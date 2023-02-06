@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
 import { MoedasList } from '../moedasList';
 import { listarMoedas } from 'src/app/services/cotacao.service';
+import {MatTableDataSource} from '@angular/material/table';
 
 
 

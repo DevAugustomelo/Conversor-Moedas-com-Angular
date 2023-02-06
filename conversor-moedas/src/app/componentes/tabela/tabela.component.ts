@@ -14,7 +14,7 @@ export class TabelaComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<MoedasList>;
-  dataSource: TabelaDataSource;
+  dataSource: TabelaDataSource ;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['cod', 'desc'];

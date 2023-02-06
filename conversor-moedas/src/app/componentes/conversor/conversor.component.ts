@@ -12,7 +12,8 @@ import { map, startWith } from 'rxjs/operators';
   styleUrls: ['./conversor.component.css'],
 })
 export class ConversorComponent implements OnInit {
-  moedasLi: MoedasList[] = listarMoedas();
+  // moedasLi: MoedasList[] = listarMoedas();
+  moedasLi: MoedasList[] = [];
   myControl = new FormControl<string | MoedasList>('');
   options: MoedasList[] = this.moedasLi;
   filteredOptions!: Observable<MoedasList[]>;
@@ -22,14 +23,17 @@ export class ConversorComponent implements OnInit {
   valorEscolhido = 1;
   valorConvertido = 0;
   taxa = 0;
-  moedaDescri = ''
-
+  descDe = ''
+  descPara = ''
+  
   constructor(private service: CotacaoService) {}
-
+  
   ngOnInit(): void {
-    // this.service.listar()
-    // .subscribe(moeda => this.moedasLi = Object.values(moeda))
-    // console.log(this.moedasLi)
+    this.service.listar()
+    .subscribe(moeda => {this.moedasLi = Object.values(moeda.symbols)
+      
+      
+    });
 
 
     
@@ -61,8 +65,27 @@ export class ConversorComponent implements OnInit {
     this.service.cotacao(this.moedaDe, this.moedaPara, this.valorEscolhido)
                 .subscribe(resp => {
                   this.valorConvertido = resp["result"].toFixed(2);
-                  this.taxa = resp["info"].rate});
+                  this.taxa = resp["info"].rate
                   
+                })
+                
+                this.descDe = this.getDescricao(this.moedaDe, this.descDe);
+                this.descPara = this.getDescricao(this.moedaPara, this.descPara);
+                  
+  }
+
+
+  getDescricao(code: string, destino:string) {
+    
+    this.moedasLi.find(valor => {
+      if(valor.code == code){
+        destino = valor.description;
+      }
+      }
+      );
+
+      return destino     
+
   }
 
     

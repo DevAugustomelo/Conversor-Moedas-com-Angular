@@ -30,7 +30,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatCardModule,
     MatAutocompleteModule,
     MatButtonModule,
-    MatTooltipModule
+    MatTooltipModule,
   ],
 })
 export class MaterialModule {}
