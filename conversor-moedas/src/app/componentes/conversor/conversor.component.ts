@@ -5,7 +5,7 @@ import { MoedasList } from '../moedasList';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-import { getConversao, HistoricoMoeda } from '../historico/historico.component';
+import { getConversao } from '../historico/historico.component';
 
 @Component({
   selector: 'app-conversor',
@@ -21,8 +21,8 @@ export class ConversorComponent implements OnInit {
   
   moedaDe = 'USD';
   moedaPara = '';
-  valorEscolhido = 1;
-  valorConvertido = 0;
+  valorEscolhido = '1';
+  valorConvertido = '';
   taxa = 0;
   descDe = ''
   descPara = ''
@@ -63,7 +63,9 @@ export class ConversorComponent implements OnInit {
 
     this.service.cotacao(this.moedaDe, this.moedaPara, this.valorEscolhido)
                 .subscribe(resp => {
-                  this.valorConvertido = resp["result"].toFixed(2);
+                  let valor = resp["result"].toFixed(2)
+                  this.valorConvertido = this.formatarValor(valor, this.moedaPara);
+                  this.valorEscolhido = this.formatarValor( parseFloat(this.valorEscolhido), this.moedaDe)
                   this.taxa = resp["info"].rate
                   
                   
@@ -91,6 +93,14 @@ export class ConversorComponent implements OnInit {
       });
 
       return destino     
+  }
+
+
+  formatarValor(valor:number, moedaCode:string): string {
+
+    let formatacao =  new Intl.NumberFormat('pt-br', {style: 'currency', currency: `${moedaCode}`}).format(valor);
+
+    return formatacao
   }
 
 }
