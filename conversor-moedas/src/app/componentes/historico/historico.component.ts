@@ -10,20 +10,17 @@ export interface HistoricoMoeda {
   moedaEscolhida: string;
   moedaConvertida: string;
   resultado: string;
+  valorDolar?: string
   taxa: number;
   acao?: string
 }
 
 const CONVERSAO_DADOS: HistoricoMoeda[] = [
-  {data: '12/01/2023', hora: 'Hydrogen', valor: '1.0079', moedaEscolhida: 'H', moedaConvertida: 'USD', resultado: '455', taxa: 5555, acao: ''},
-  {data: '02/02/2023', hora: 'Helium', valor: '4.0026', moedaEscolhida: 'He', moedaConvertida: 'EUR', resultado: '455', taxa: 5555, acao: ''},
-  {data: '01/01/2023', hora: 'Lithium', valor: '6.941', moedaEscolhida: 'Li', moedaConvertida: 'BRL', resultado: '455', taxa: 999, acao: ''},
-  {data: '12/01/2023', hora: 'Beryllium', valor: '9.0122', moedaEscolhida: 'a', moedaConvertida: 'USD', resultado: '455', taxa: 5555, acao: ''},
-  {data: '12/01/2023', hora: 'Boron', valor: '10.811', moedaEscolhida: 'B', moedaConvertida: 'USD', resultado: '455', taxa: 5555, acao: ''},
+  {data: '12/01/2023', hora: 'Hydrogen', valor: '1.0079', moedaEscolhida: 'H', moedaConvertida: 'USD', resultado: '455', valorDolar: '222', taxa: 5555, acao: ''},
+  {data: '02/02/2023', hora: 'Helium', valor: '4.0026', moedaEscolhida: 'He', moedaConvertida: 'EUR', resultado: '122455', valorDolar: '222', taxa: 5555, acao: ''},
+  {data: '12/01/2023', hora: 'Boron', valor: '10.811', moedaEscolhida: 'B', moedaConvertida: 'USD', resultado: '12455', valorDolar: '222', taxa: 5555, acao: ''},
  
 ];
-
-
 
 
 @Component({
@@ -32,6 +29,8 @@ const CONVERSAO_DADOS: HistoricoMoeda[] = [
   styleUrls: ['./historico.component.css']
 })
 export class HistoricoComponent {
+
+  dolarAlto = 1000
   
 
   displayedColumns: string[] = ['data', 'hora', 'valor', 'moedaEscolhida','moedaConvertida', 'resultado', 'taxa', 'acao']
@@ -56,7 +55,7 @@ export function getNewDateBr () {
 }
 
 
- export function getConversao(valorEscolhido:string, moedaDe:string, moedaPara:string, valorConvertido:string, taxa:number) {
+ export function getConversao(valorEscolhido:string, moedaDe:string, moedaPara:string, valorConvertido:string, taxa:number, valorDolar:string) {
   const convert: HistoricoMoeda =  {
     data: getNewDateBr(),
     hora: new Date().getHours() + ":" + new Date().getMinutes().toString().padStart(2,'0'),
@@ -65,6 +64,7 @@ export function getNewDateBr () {
     moedaConvertida: moedaPara,
     resultado: valorConvertido,
     taxa: taxa,
+    valorDolar: valorDolar,
   }
   CONVERSAO_DADOS.push(convert)
 }

@@ -23,6 +23,7 @@ export class ConversorComponent implements OnInit {
   moedaPara = '';
   valorEscolhido = '1';
   valorConvertido = '';
+  valorDolar = ''
   taxa = 0;
   descDe = ''
   descPara = ''
@@ -63,24 +64,29 @@ export class ConversorComponent implements OnInit {
 
     this.service.cotacao(this.moedaDe, this.moedaPara, this.valorEscolhido)
                 .subscribe(resp => {
-                  let valor = resp["result"].toFixed(2)
+                  let valor = resp["result"].toFixed(2);
                   this.valorConvertido = this.formatarValor(valor, this.moedaPara);
-                  this.valorEscolhido = this.formatarValor( parseFloat(this.valorEscolhido), this.moedaDe)
-                  this.taxa = resp["info"].rate
+                  this.valorEscolhido = this.formatarValor( parseFloat(this.valorEscolhido), this.moedaDe);
+                  this.taxa = resp["info"].rate;
                   
-                  
-                  getConversao(
-                    this.valorEscolhido,
-                    this.moedaDe,
-                    this.moedaPara,
-                    this.valorConvertido,
-                    this.taxa 
-                  )
+                  this.service.cotacao(this.moedaPara, 'USD', valor).subscribe(dolar => {
+                    this.valorDolar = dolar["result"];
+                    // console.log(this.valorDolar); 
+
+                    getConversao(
+                      this.valorEscolhido,
+                      this.moedaDe,
+                      this.moedaPara,
+                      this.valorConvertido,
+                      this.taxa,
+                      this.valorDolar 
+                    )
+                  }); 
+                    
                 })
                 
                 this.descDe = this.getDescricao(this.moedaDe, this.descDe);
                 this.descPara = this.getDescricao(this.moedaPara, this.descPara);
-                  
   }
 
 

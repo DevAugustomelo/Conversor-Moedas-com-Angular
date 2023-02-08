@@ -49,7 +49,11 @@
          <!-- Resultado -->
          <ng-container matColumnDef="resultado">
             <th mat-header-cell *matHeaderCellDef> Resultado </th>
-            <td mat-cell *matCellDef="let element"> {{element.resultado}} </td>
+            <td mat-cell *matCellDef="let element"> 
+                <mat-icon *ngIf="element.valorDolar > 10000" matTooltip="Valor Acima de US$ 10,000 atingido" aria-label="icon alerta" class="v-center" style="color: #FFB300" >report</mat-icon>
+              {{element.resultado}} 
+              
+            </td>
           </ng-container>
 
         <!-- Taxa -->

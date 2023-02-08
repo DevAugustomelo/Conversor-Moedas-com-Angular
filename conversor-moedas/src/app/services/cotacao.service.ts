@@ -3,12 +3,6 @@ import { Injectable } from '@angular/core';
 
 
 
-import { Observable } from 'rxjs';
-import { MoedasList } from '../componentes/moedasList';
-
-
-
-
 
 @Injectable({
   providedIn: 'root',
@@ -18,22 +12,21 @@ export class CotacaoService {
 
   constructor(private http: HttpClient) {}
 
+
   listar() {
     return this.http.get<any>(this.API);
   }
+
 
   cotacao(de:string, para:string, quantidade:string) {
     const request = `https://api.exchangerate.host/convert?from=${de}&to=${para}&amount=${quantidade}`;
 
     return this.http.get<any>(request)
 
-    
-
   }
+
+  
 }
-
-
-
 
 
 export function listarMoedas() {
