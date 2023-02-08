@@ -5,6 +5,7 @@ import { MoedasList } from '../moedasList';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import { getConversao, HistoricoMoeda } from '../historico/historico.component';
 
 @Component({
   selector: 'app-conversor',
@@ -35,10 +36,7 @@ export class ConversorComponent implements OnInit {
       
     });
 
-
     
-
-
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map((value) => {
@@ -47,6 +45,7 @@ export class ConversorComponent implements OnInit {
       })
     );
   }
+
 
   displayFn(moeda: MoedasList): string {
     return moeda && moeda.code ? moeda.code : '';
@@ -67,6 +66,14 @@ export class ConversorComponent implements OnInit {
                   this.valorConvertido = resp["result"].toFixed(2);
                   this.taxa = resp["info"].rate
                   
+                  
+                  getConversao(
+                    this.valorEscolhido,
+                    this.moedaDe,
+                    this.moedaPara,
+                    this.valorConvertido,
+                    this.taxa 
+                  )
                 })
                 
                 this.descDe = this.getDescricao(this.moedaDe, this.descDe);
@@ -80,13 +87,11 @@ export class ConversorComponent implements OnInit {
     this.moedasLi.find(valor => {
       if(valor.code == code){
         destino = valor.description;
-      }
-      }
-      );
+        }
+      });
 
       return destino     
-
   }
 
-    
 }
+
