@@ -12,9 +12,9 @@
     <mat-form-field>
         <mat-label>Filtrar</mat-label>
         <input matInput (keyup)="applyFilter($event)" placeholder="Ex. usd" #input>
-      </mat-form-field>
+    </mat-form-field>
       
-      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
       
         <!-- Data -->
         <ng-container matColumnDef="data">
@@ -24,7 +24,7 @@
       
         <!-- Hora -->
         <ng-container matColumnDef="hora">
-          <th mat-header-cell *matHeaderCellDef> Hora </th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Hora </th>
           <td mat-cell *matCellDef="let element"> {{element.hora}} </td>
         </ng-container>
       
@@ -48,7 +48,7 @@
 
          <!-- Resultado -->
          <ng-container matColumnDef="resultado">
-            <th mat-header-cell *matHeaderCellDef> Resultado </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Resultado </th>
             <td mat-cell *matCellDef="let element"> 
                 <mat-icon *ngIf="element.valorDolar > 10000" matTooltip="Valor Acima de US$ 10,000 atingido" aria-label="icon alerta" class="v-center" style="color: #FFB300" >report</mat-icon>
               {{element.resultado}} 
@@ -82,5 +82,15 @@
           <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
         </tr>
       </table>
+
+
+      <mat-paginator #paginator
+        [length]="dataSource?.data?.length"
+        [pageIndex]="0"
+        [pageSize]="10"
+        [showFirstLastButtons]="true"
+        [pageSizeOptions]="[5, 10, 20]"
+        aria-label="Select page">
+      </mat-paginator>
       
 </section>

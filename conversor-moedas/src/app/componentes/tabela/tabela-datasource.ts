@@ -5,15 +5,13 @@ import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
 import { MoedasList } from '../moedasList';
 import { listarMoedas } from 'src/app/services/cotacao.service';
-import {MatTableDataSource} from '@angular/material/table';
+import {MatTableDataSource, MatTableDataSourcePaginator} from '@angular/material/table';
 
 
 
 
 
-let MOEDAS_TABLE: MoedasList[] = []
-
-MOEDAS_TABLE = listarMoedas()
+let MOEDAS_TABLE: MoedasList[] = listarMoedas()
 
 
 
@@ -34,6 +32,7 @@ export class TabelaDataSource extends DataSource<MoedasList> {
   data: MoedasList[] = MOEDAS_TABLE;
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
+  dataSource = new MatTableDataSource(MOEDAS_TABLE)
 
   constructor() {
     super();

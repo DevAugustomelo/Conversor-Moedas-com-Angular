@@ -5,6 +5,12 @@
 
 
 <div class="tabela mat-elevation-z8" >
+
+  <mat-form-field>
+    <mat-label>Filtrar</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. usd" #input>
+  </mat-form-field>
+
   <table mat-table class="full-width-table" matSort aria-label="Elements">
     <!-- Id Column -->
     <ng-container matColumnDef="cod">
@@ -26,7 +32,8 @@
       [length]="dataSource?.data?.length"
       [pageIndex]="0"
       [pageSize]="10"
-      [pageSizeOptions]="[5, 10, 20]"
+      [pageSizeOptions]="[5, 10, 20, 50]"
+      [showFirstLastButtons]="true"
       aria-label="Select page">
   </mat-paginator>
 </div>

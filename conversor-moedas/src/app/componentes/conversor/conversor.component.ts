@@ -70,7 +70,7 @@ export class ConversorComponent implements OnInit {
                   this.taxa = resp["info"].rate;
                   
                   this.service.cotacao(this.moedaPara, 'USD', valor).subscribe(dolar => {
-                    this.valorDolar = dolar["result"];
+                    this.valorDolar = dolar["result"].toFixed(2);
                     // console.log(this.valorDolar); 
 
                     getConversao(
