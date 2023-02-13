@@ -21,6 +21,7 @@ import { ConversorComponent } from './componentes/conversor/conversor.component'
 import { HistoricoComponent } from './componentes/historico/historico.component';
 import { TabelaComponent } from './componentes/tabela/tabela.component';
 import { MoedaComponent } from './componentes/moeda/moeda.component';
+import { AcoesComponent } from './componentes/historico/acoes/acoes.component';
 
 
 
@@ -35,6 +36,7 @@ import { MoedaComponent } from './componentes/moeda/moeda.component';
     HistoricoComponent,
     TabelaComponent,
     MoedaComponent,
+    AcoesComponent,
   ],
   imports: [
     BrowserModule,

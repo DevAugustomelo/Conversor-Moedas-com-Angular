@@ -1,0 +1,49 @@
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">{{ title }}</h5>
+              </div>
+              <div class="modal-body">
+                <p>{{ msg }}</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="cancelar()">{{ cancelTxt }}</button>
+                <button type="button" class="btn btn-primary" (click)="confirmarAcao()">{{ okTxt }}</button>
+              </div>
+            </div> -->
+         
+ 
+
+
+<section class="container  modal-box" >
+
+  <h1>{{ title }}</h1>
+  <hr>
+      
+    <div class="">
+        <p>As informações desta conversão serão excluidas. <br/><br/> Confirma a exclusão?</p>
+        <hr>
+        <div class="acoes">
+            <button class="botao botao-excluir" mat-flat-button color="warn" (click)="confirmarAcao()">{{ okTxt}}</button>
+            <button  class="botao botao-cancelar" mat-flat-button (click)="cancelar()">{{cancelTxt}}</button>
+        </div>
+    </div>
+
+
+
+ <!-- <div class="overlay"></div> -->
+
+</section>
+
+

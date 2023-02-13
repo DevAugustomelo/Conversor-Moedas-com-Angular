@@ -58,7 +58,7 @@
 
   .bg-card-header {
     background: linear-gradient(0.25turn, #2B2B2B,#2B2B2B, #A49DA5, 50%,#A49DA5,#2B2B2B, #2B2B2B);
-    color:#ffffff;
+    color:#000000;
 }
 
 .bg-card-header a {
@@ -67,7 +67,7 @@
 }
 
 .card-body {
-  background: #464545;
+  background: #E6EE9C;
 }
 
 
