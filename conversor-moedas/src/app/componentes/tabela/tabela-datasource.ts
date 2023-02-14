@@ -4,7 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
 import { MoedasList } from '../moedasList';
-import { listarMoedas } from 'src/app/services/cotacao.service';
+import { CotacaoService, listarMoedas } from 'src/app/services/cotacao.service';
 import {MatTableDataSource, MatTableDataSourcePaginator} from '@angular/material/table';
 
 
@@ -34,9 +34,14 @@ export class TabelaDataSource extends DataSource<MoedasList> {
   sort: MatSort | undefined;
   dataSource = new MatTableDataSource(MOEDAS_TABLE)
 
-  constructor() {
-    super();
-  }
+  // listagem:any;
+
+  // constructor(private cotacao: CotacaoService) {
+  //   super();
+  //   this.listagem = this.cotacao.listar()
+  // }
+
+
 
 
 

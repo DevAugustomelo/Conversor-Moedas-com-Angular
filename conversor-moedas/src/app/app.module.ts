@@ -22,6 +22,7 @@ import { HistoricoComponent } from './componentes/historico/historico.component'
 import { TabelaComponent } from './componentes/tabela/tabela.component';
 import { MoedaComponent } from './componentes/moeda/moeda.component';
 import { AcoesComponent } from './componentes/historico/acoes/acoes.component';
+import { SharedModule } from './modules/shared.module';
 
 
 
@@ -44,7 +45,8 @@ import { AcoesComponent } from './componentes/historico/acoes/acoes.component';
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
-    MaterialModule
+    MaterialModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent],
