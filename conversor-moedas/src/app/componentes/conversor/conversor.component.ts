@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CotacaoService, listarMoedas } from 'src/app/services/cotacao.service';
 import { MoedasList } from '../moedasList';
 
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
 import { getConversao } from '../historico/historico.component';
 
 @Component({
@@ -28,77 +27,71 @@ export class ConversorComponent implements OnInit {
   descDe = ''
   descPara = ''
   
+  inputValor = new FormControl('', [Validators.required, Validators.min(1)]);
+  
+
+
   constructor(private service: CotacaoService) {}
   
+
+
   ngOnInit(): void {
     this.service.listar()
     .subscribe(moeda => {this.moedasLi = Object.values(moeda.symbols)
-      
-      
+            
     });
 
-    
-    this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(''),
-      map((value) => {
-        const code = typeof value === 'string' ? value : value?.code;
-        return code ? this._filter(code as string) : this.options.slice();
-      })
-    );
+
   }
 
 
-  displayFn(moeda: MoedasList): string {
-    return moeda && moeda.code ? moeda.code : '';
+  getErrorMessage() {
+    if (this.inputValor.hasError('required')) {
+      return 'Você precisa informar um número válido';
+    }
+
+    return this.inputValor.hasError('min(1)') ? '' : 'Entrada mínima deve ser igual a 1.';
   }
 
-  private _filter(name: string): MoedasList[] {
-    const filterValue = name.toLowerCase();
-
-    return this.options.filter((option) =>
-      option.code.toLowerCase().includes(filterValue)
-    );
-  }
 
   converter(): void {
 
+    //Chamada para conversão retornando o valor convertido e a taxa de conversão
     this.service.cotacao(this.moedaDe, this.moedaPara, this.valorEscolhido)
                 .subscribe(resp => {
                   let valor = resp["result"].toFixed(2);
                   this.valorConvertido = this.formatarValor(valor, this.moedaPara);
                   this.valorEscolhido = this.formatarValor( parseFloat(this.valorEscolhido), this.moedaDe);
                   this.taxa = resp["info"].rate;
-                  
+
+                  //valor das conversões em dolar                  
                   this.service.cotacao(this.moedaPara, 'USD', valor).subscribe(dolar => {
                     this.valorDolar = dolar["result"].toFixed(2);
                     // console.log(this.valorDolar); 
 
-                    getConversao(
-                      this.valorEscolhido,
-                      this.moedaDe,
-                      this.moedaPara,
-                      this.valorConvertido,
-                      this.taxa,
-                      this.valorDolar 
+
+                  getConversao(
+                    this.valorEscolhido,
+                    this.moedaDe,
+                    this.moedaPara,
+                    this.valorConvertido,
+                    this.taxa,
+                    this.valorDolar 
                     )
                   }); 
-                    
+
                 })
                 
-                this.descDe = this.getDescricao(this.moedaDe, this.descDe);
-                this.descPara = this.getDescricao(this.moedaPara, this.descPara);
+                this.descDe = this.getDescricao(this.moedaDe);
+                this.descPara = this.getDescricao(this.moedaPara);
   }
 
 
-  getDescricao(code: string, destino:string) {
-    
-    this.moedasLi.find(valor => {
-      if(valor.code == code){
-        destino = valor.description;
-        }
-      });
+  getDescricao(code: string) {
+    let descricao:any;
+    this.moedasLi.find(valor => valor.code == code ? descricao = valor.description: '');
 
-      return destino     
+    return descricao.toString()      
   }
 
 

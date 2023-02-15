@@ -9,47 +9,36 @@
     <hr />
   </mat-card-title>
 
-  <div class="input-valor">
+  <div class="input-valor mb-3">
     <div>
-      <p>
+        <div *ngIf="msg.onerror" style="color: #DD2C00;" class="erro" >
+          *Todos os campos são obrigatórios {{msg.onerror}}
+        </div>
+      <br>
         <mat-form-field appearance="outline">
           <mat-label>Informe o valor</mat-label>
           <input
+            #msg
             matInput
             type="number"
             min="1"
+            required
             class="example-right-align"
             placeholder="0"
             [(ngModel)]="valorEscolhido"
-          />
+            [formControl]="inputValor"/>
           <span matTextPrefix>$&nbsp;</span>
           <span matTextSuffix>.00</span>
           <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
         </mat-form-field>
-      </p>
+        <!-- <mat-error *ngIf="!msg.required">Digite apenas números maiores que zero</mat-error>       -->
+        <mat-error *ngIf="inputValor.invalid">{{getErrorMessage()}}</mat-error>      
     </div>
     <div></div>
   </div>
 
   <div class="select">
     <div>
-      <!-- <div class="serch-box">
-        <input type="text" id="input-class" placeholder="pesquisar" />
-      </div> -->
-      <!-- <div class="autocomplete">
-                    <form class="example-form">
-                        <mat-form-field class="example-full-width" appearance="fill">
-                          <mat-label>Buscador</mat-label>
-                          <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
-                          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-                            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                              {{option.code}}
-                            </mat-option>
-                          </mat-autocomplete>
-                        </mat-form-field>
-                      </form>
-                      
-                </div>  -->
 
       <mat-form-field appearance="outline">
         <mat-label><mat-card-title>DE Moeda</mat-card-title></mat-label>
@@ -58,14 +47,14 @@
             class="option"
             *ngFor="let moeda of moedasLi"
             [value]="moeda.code"
-            >{{ moeda.code }}</mat-option
-          >
+            >
+            {{ moeda.code }}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
 
     <div id="btn-converter">
-      <button mat-fab matTooltip="Converter" color="warn" (click)="converter()">
+      <button mat-fab matTooltip="Converter" color="warn" (click)="converter()" [disabled]="inputValor.invalid || moedaPara == '' ">
         <mat-icon>swap_horiz</mat-icon>
       </button>
     </div>
@@ -73,7 +62,7 @@
     <div>
       <mat-form-field appearance="outline">
         <mat-label><mat-card-title>PARA Moeda</mat-card-title></mat-label>
-        <mat-select [(value)]="moedaPara">
+        <mat-select [(value)]="moedaPara" required>
           <mat-option
             class="option"
             *ngFor="let moeda of moedasLi"

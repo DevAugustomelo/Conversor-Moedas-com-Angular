@@ -1,6 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Route, Router } from '@angular/router';
-import { CONVERSAO_DADOS, HistoricoMoeda } from '../historico.component';
+import {  HistoricoMoeda } from '../historico.component';
 
 @Component({
   selector: 'app-acoes',
@@ -17,7 +17,8 @@ export class AcoesComponent {
 
   @Input() dadosConversao!: HistoricoMoeda[]
 
-  dados = CONVERSAO_DADOS
+
+  @Output() deletarEvent: EventEmitter<any> = new EventEmitter();
 
 
 
@@ -28,10 +29,9 @@ export class AcoesComponent {
   
   
 
-  confirmarAcao() {
-
-    // console.log(this.dados);
-    // this.router.navigate(['/historico'])
+  excluir() {
+    this.deletarEvent.emit()
+    this.router.navigate(['/historico'])
   }
 
 

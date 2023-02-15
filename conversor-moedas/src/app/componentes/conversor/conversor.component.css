@@ -62,3 +62,10 @@ input.example-right-align {
   flex-direction: column;
   align-items: center;
 }
+
+
+.erro {
+  display: flex;
+  justify-content: center;
+  
+}

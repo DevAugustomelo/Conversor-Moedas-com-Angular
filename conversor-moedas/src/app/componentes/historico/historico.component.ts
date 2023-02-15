@@ -18,8 +18,8 @@ export interface HistoricoMoeda {
   acao?: string
 }
 
-  export const CONVERSAO_DADOS: HistoricoMoeda[] = [
-  {data: '12/01/2023', hora: 'Hydrogen', valor: '1.0079', moedaEscolhida: 'H', moedaConvertida: 'USD', resultado: '455', valorDolar: '222', taxa: 5555, acao: ''},
+  const CONVERSAO_DADOS: HistoricoMoeda[] = [
+  {data: '12/01/2023', hora: 'teste', valor: '1.0079', moedaEscolhida: 'H', moedaConvertida: 'USD', resultado: '455', valorDolar: '222', taxa: 5555, acao: ''},
   {data: '02/02/2023', hora: 'Helium', valor: '4.0026', moedaEscolhida: 'He', moedaConvertida: 'EUR', resultado: '122455', valorDolar: '222', taxa: 5555, acao: ''},
   {data: '12/01/2023', hora: 'Boron', valor: '10.811', moedaEscolhida: 'B', moedaConvertida: 'USD', resultado: '12455', valorDolar: '222', taxa: 5555, acao: ''},
   {data: '12/01/2023', hora: 'guga', valor: '1.0079', moedaEscolhida: 'H', moedaConvertida: 'USD', resultado: '455', valorDolar: '222', taxa: 5555, acao: ''},
@@ -48,14 +48,11 @@ export class HistoricoComponent implements AfterViewInit {
   @ViewChild(MatTable) table!: MatTable<HistoricoMoeda>;
 
 
-  @Output() deletarEvent: EventEmitter<any> = new EventEmitter();
+ getValue(dataV:string, horaV:string ) {
+  let index = CONVERSAO_DADOS.findIndex(i => i.data === dataV && i.hora === horaV);
 
-
-obj:string = '';
-
- onclick(event: MouseEvent ){
-   console.log(event);
-   
+  CONVERSAO_DADOS.splice(index, 1)
+  
 }
 
 
