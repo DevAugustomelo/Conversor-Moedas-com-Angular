@@ -46,7 +46,7 @@ describe(ConversorComponent.name, () => {
 
     fixture = TestBed.createComponent(ConversorComponent);
     conversor = fixture.componentInstance;
-    fixture.detectChanges();
+    
   });
 
 
@@ -63,6 +63,7 @@ describe(ConversorComponent.name, () => {
       code: 'USD', description: 'United States Dollar'}]
     let desc = conversor.getDescricao('USD', list);
     let retorno = 'United States Dollar'
+    fixture.detectChanges();
 
     expect(desc).toBe(retorno);
   });
@@ -75,6 +76,7 @@ describe(ConversorComponent.name, () => {
     let formatar = conversor.formatarValor(1200000, 'BRL')
 
     let retorno = 'R$ 1.200.000,00'
+    fixture.detectChanges();
     
     expect(formatar).toBe(retorno);
 

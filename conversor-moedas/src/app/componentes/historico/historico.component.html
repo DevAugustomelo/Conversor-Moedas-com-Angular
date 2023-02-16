@@ -17,6 +17,12 @@
         
         <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
         
+          <!-- ID -->
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> Nº </th>
+            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+          </ng-container>
+
           <!-- Data -->
           <ng-container matColumnDef="data">
             <th mat-header-cell *matHeaderCellDef> Data </th>
@@ -70,7 +76,7 @@
             <th mat-header-cell *matHeaderCellDef> Ação </th>
             <td mat-cell *matCellDef="let element"> {{element.acao}}
               <button  mat-icon-button color="warn" matTooltip="Excluir" routerLink="/historico/acoes"
-               (click)="getValue(element.data, element.hora)"
+               (click)="getValue(element.id)"
                
                aria-label="btn deletar" >
                 <mat-icon>delete</mat-icon>

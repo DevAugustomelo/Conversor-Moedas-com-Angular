@@ -79,10 +79,10 @@ export class ConversorComponent implements OnInit {
                     )
                   }); 
 
-                })
+                });
                 
-                this.descDe = this.getDescricao(this.moedaDe, this.moedasLi);
-                this.descPara = this.getDescricao(this.moedaPara, this.moedasLi);
+    this.descDe = this.getDescricao(this.moedaDe, this.moedasLi);
+    this.descPara = this.getDescricao(this.moedaPara, this.moedasLi);
   }
 
 
@@ -100,7 +100,6 @@ export class ConversorComponent implements OnInit {
 
 
   formatarValor(valor:number, moedaCode:string): string {
-
     let formatacao =  new Intl.NumberFormat('pt-br', {style: 'currency', currency: `${moedaCode}`}).format(valor);
 
     return formatacao

@@ -7,6 +7,7 @@ import { Observable, of as observableOf, merge, map } from 'rxjs';
 
 
 export interface HistoricoMoeda {
+  id?: number;
   data: string;
   hora: string;
   valor: string;
@@ -19,21 +20,21 @@ export interface HistoricoMoeda {
 }
 
   const CONVERSAO_DADOS: HistoricoMoeda[] = [
-  {data: '12/01/2023', hora: 'teste', valor: '1.0079', moedaEscolhida: 'H', moedaConvertida: 'USD', resultado: '455', valorDolar: '222', taxa: 5555, acao: ''},
-  {data: '02/02/2023', hora: 'Helium', valor: '4.0026', moedaEscolhida: 'He', moedaConvertida: 'EUR', resultado: '122455', valorDolar: '222', taxa: 5555, acao: ''},
-  {data: '12/01/2023', hora: 'Boron', valor: '10.811', moedaEscolhida: 'B', moedaConvertida: 'USD', resultado: '12455', valorDolar: '222', taxa: 5555, acao: ''},
-  {data: '12/01/2023', hora: 'guga', valor: '1.0079', moedaEscolhida: 'H', moedaConvertida: 'USD', resultado: '455', valorDolar: '222', taxa: 5555, acao: ''},
-  {data: '02/02/2023', hora: 'Helium', valor: '4.0026', moedaEscolhida: 'He', moedaConvertida: 'EUR', resultado: '122455', valorDolar: '222', taxa: 5555, acao: ''},
-  {data: '12/01/2023', hora: 'Boron', valor: '10.811', moedaEscolhida: 'B', moedaConvertida: 'USD', resultado: '12455', valorDolar: '222', taxa: 5555, acao: ''},
-  {data: '12/01/2023', hora: 'Hydrogen', valor: '1.0079', moedaEscolhida: 'H', moedaConvertida: 'USD', resultado: '455', valorDolar: '222', taxa: 5555, acao: ''},
-  {data: '02/02/2023', hora: 'Helium', valor: '4.0026', moedaEscolhida: 'He', moedaConvertida: 'EUR', resultado: '122455', valorDolar: '222', taxa: 5555, acao: ''},
-  {data: '12/01/2023', hora: 'Boron', valor: '10.811', moedaEscolhida: 'B', moedaConvertida: 'USD', resultado: '12455', valorDolar: '222', taxa: 5555, acao: ''},
-  {data: '12/01/2023', hora: 'Hydrogen', valor: '1.0079', moedaEscolhida: 'H', moedaConvertida: 'USD', resultado: '455', valorDolar: '222', taxa: 5555, acao: ''},
-  {data: '02/02/2023', hora: 'Helium', valor: '4.0026', moedaEscolhida: 'He', moedaConvertida: 'EUR', resultado: '122455', valorDolar: '222', taxa: 5555, acao: ''},
-  {data: '12/01/2023', hora: 'Boron', valor: '10.811', moedaEscolhida: 'B', moedaConvertida: 'USD', resultado: '12455', valorDolar: '222', taxa: 5555, acao: ''},
-  {data: '12/01/2023', hora: 'Hydrogen', valor: '1.0079', moedaEscolhida: 'H', moedaConvertida: 'USD', resultado: '455', valorDolar: '222', taxa: 5555, acao: ''},
-  {data: '02/02/2023', hora: 'Helium', valor: '4.0026', moedaEscolhida: 'He', moedaConvertida: 'EUR', resultado: '122455', valorDolar: '222', taxa: 5555, acao: ''},
-  {data: '12/01/2023', hora: 'Boron', valor: '10.811', moedaEscolhida: 'B', moedaConvertida: 'USD', resultado: '12455', valorDolar: '222', taxa: 5555, acao: ''},
+  {id: 1, data: '12/01/2023', hora: 'teste', valor: '1.0079', moedaEscolhida: 'H', moedaConvertida: 'USD', resultado: '455', valorDolar: '222', taxa: 5555, acao: ''},
+  {id: 2, data: '02/02/2023', hora: 'Helium', valor: '4.0026', moedaEscolhida: 'He', moedaConvertida: 'EUR', resultado: '122455', valorDolar: '222', taxa: 5555, acao: ''},
+  {id: 3, data: '12/01/2023', hora: 'Boron', valor: '10.811', moedaEscolhida: 'B', moedaConvertida: 'USD', resultado: '12455', valorDolar: '222', taxa: 5555, acao: ''},
+  {id: 4, data: '12/01/2023', hora: 'guga', valor: '1.0079', moedaEscolhida: 'H', moedaConvertida: 'USD', resultado: '455', valorDolar: '222', taxa: 5555, acao: ''},
+  {id: 5, data: '02/02/2023', hora: 'Helium', valor: '4.0026', moedaEscolhida: 'He', moedaConvertida: 'EUR', resultado: '122455', valorDolar: '222', taxa: 5555, acao: ''},
+  {id: 6, data: '12/01/2023', hora: 'Boron', valor: '10.811', moedaEscolhida: 'B', moedaConvertida: 'USD', resultado: '12455', valorDolar: '222', taxa: 5555, acao: ''},
+  {id: 7, data: '12/01/2023', hora: 'Hydrogen', valor: '1.0079', moedaEscolhida: 'H', moedaConvertida: 'USD', resultado: '455', valorDolar: '222', taxa: 5555, acao: ''},
+  {id: 8, data: '02/02/2023', hora: 'Helium', valor: '4.0026', moedaEscolhida: 'He', moedaConvertida: 'EUR', resultado: '122455', valorDolar: '222', taxa: 5555, acao: ''},
+  {id: 9, data: '12/01/2023', hora: 'Boron', valor: '10.811', moedaEscolhida: 'B', moedaConvertida: 'USD', resultado: '12455', valorDolar: '222', taxa: 5555, acao: ''},
+  {id: 10, data: '12/01/2023', hora: 'Hydrogen', valor: '1.0079', moedaEscolhida: 'H', moedaConvertida: 'USD', resultado: '455', valorDolar: '222', taxa: 5555, acao: ''},
+  {id: 11, data: '02/02/2023', hora: 'Helium', valor: '4.0026', moedaEscolhida: 'He', moedaConvertida: 'EUR', resultado: '122455', valorDolar: '222', taxa: 5555, acao: ''},
+  {id: 12, data: '12/01/2023', hora: 'Boron', valor: '10.811', moedaEscolhida: 'B', moedaConvertida: 'USD', resultado: '12455', valorDolar: '222', taxa: 5555, acao: ''},
+  {id: 13, data: '12/01/2023', hora: 'Hydrogen', valor: '1.0079', moedaEscolhida: 'H', moedaConvertida: 'USD', resultado: '455', valorDolar: '222', taxa: 5555, acao: ''},
+  {id: 14, data: '02/02/2023', hora: 'Helium', valor: '4.0026', moedaEscolhida: 'He', moedaConvertida: 'EUR', resultado: '122455', valorDolar: '222', taxa: 5555, acao: ''},
+  {id: 15, data: '12/01/2023', hora: 'Boron', valor: '10.811', moedaEscolhida: 'B', moedaConvertida: 'USD', resultado: '12455', valorDolar: '222', taxa: 5555, acao: ''},
 ];
 
 
@@ -48,8 +49,8 @@ export class HistoricoComponent implements AfterViewInit {
   @ViewChild(MatTable) table!: MatTable<HistoricoMoeda>;
 
 
- getValue(dataV:string, horaV:string ) {
-  let index = CONVERSAO_DADOS.findIndex(i => i.data === dataV && i.hora === horaV);
+ getValue(id:number) {
+  let index = CONVERSAO_DADOS.findIndex(i => i.id === id);
 
   CONVERSAO_DADOS.splice(index, 1)
   
@@ -60,7 +61,7 @@ export class HistoricoComponent implements AfterViewInit {
   constructor () {
   }
 
-  displayedColumns: string[] = ['data', 'hora', 'valor', 'moedaEscolhida','moedaConvertida', 'resultado', 'taxa', 'acao']
+  displayedColumns: string[] = ['id', 'data', 'hora', 'valor', 'moedaEscolhida','moedaConvertida', 'resultado', 'taxa', 'acao']
   dataSource = new MatTableDataSource(CONVERSAO_DADOS);
   data: HistoricoMoeda[] = CONVERSAO_DADOS;
   
@@ -139,6 +140,7 @@ export function getNewDateBr () {
 
  export function getConversao(valorEscolhido:string, moedaDe:string, moedaPara:string, valorConvertido:string, taxa:number, valorDolar:string) {
   const convert: HistoricoMoeda =  {
+    id: CONVERSAO_DADOS.length+1,
     data: getNewDateBr(),
     hora: new Date().getHours() + ":" + new Date().getMinutes().toString().padStart(2,'0'),
     valor: valorEscolhido,
