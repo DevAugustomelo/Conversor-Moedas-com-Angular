@@ -30,12 +30,12 @@ export class ConversorComponent implements OnInit {
   inputValor = new FormControl('', [Validators.required, Validators.min(1)]);
   
 
-  constructor(private service?: CotacaoService) {}
+  constructor(private service: CotacaoService) {}
   
 
 
   ngOnInit(): void {
-    this.service?.listar()
+    this.service.listar()
     .subscribe(moeda => {this.moedasLi = Object.values(moeda.symbols)
             
     });
@@ -56,7 +56,7 @@ export class ConversorComponent implements OnInit {
   converter(): void {
 
     //Chamada para conversão retornando o valor convertido e a taxa de conversão
-    this.service?.cotacao(this.moedaDe, this.moedaPara, this.valorEscolhido)
+    this.service.cotacao(this.moedaDe, this.moedaPara, this.valorEscolhido)
                 .subscribe(resp => {
                   let valor = resp["result"].toFixed(2);
                   this.valorConvertido = this.formatarValor(valor, this.moedaPara);
@@ -64,7 +64,7 @@ export class ConversorComponent implements OnInit {
                   this.taxa = resp["info"].rate;
 
                   //valor das conversões em dolar                  
-                  this.service?.cotacao(this.moedaPara, 'USD', valor).subscribe(dolar => {
+                  this.service.cotacao(this.moedaPara, 'USD', valor).subscribe(dolar => {
                     this.valorDolar = dolar["result"].toFixed(2);
                     // console.log(this.valorDolar); 
 
@@ -81,16 +81,21 @@ export class ConversorComponent implements OnInit {
 
                 })
                 
-                this.descDe = this.getDescricao(this.moedaDe);
-                this.descPara = this.getDescricao(this.moedaPara);
+                this.descDe = this.getDescricao(this.moedaDe, this.moedasLi);
+                this.descPara = this.getDescricao(this.moedaPara, this.moedasLi);
   }
 
 
-  getDescricao(code: string): string {
-    let descricao = '';
-    this.moedasLi.find(valor => valor.code == code ? descricao = valor.description : '');
+  getDescricao(code: string, list: MoedasList[]) {
+    let filtro: any
+    filtro = list.find(valor => 
+      valor.code === code
+    );
 
-    return descricao      
+    let desc = filtro.description as string
+
+    return desc
+        
   }
 
 

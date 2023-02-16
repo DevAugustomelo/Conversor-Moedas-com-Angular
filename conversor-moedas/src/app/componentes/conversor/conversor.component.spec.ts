@@ -1,4 +1,10 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppRoutingModule } from 'src/app/app-routing.module';
+import { MaterialModule } from 'src/app/modules/material.module';
 import { CotacaoService } from 'src/app/services/cotacao.service';
 
 import { ConversorComponent } from './conversor.component';
@@ -10,33 +16,69 @@ import { ConversorComponent } from './conversor.component';
 
 describe(ConversorComponent.name, () => {
   let conversor: ConversorComponent;
-//   let fixture: ComponentFixture<ConversorComponent>;
+  let fixture: ComponentFixture<ConversorComponent>;
 
 
 
-  beforeEach(() => {
+  beforeEach(async () => {
 
-    conversor = new ConversorComponent();
+    await TestBed.configureTestingModule({
+
+      declarations: [
+        ConversorComponent,
+
+      ],
+      imports:[
+        HttpClientModule,
+        MaterialModule,
+        FormsModule,
+        ReactiveFormsModule,
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule
+
+      ],
+      providers: [CotacaoService]
+      
+    })
+    .compileComponents();
 
 
-
-
-    // await TestBed.configureTestingModule({
-    //   declarations: [ ConversorComponent ]
-    // })
-    // .compileComponents();
-
-    // fixture = TestBed.createComponent(ConversorComponent);
-    // component = fixture.componentInstance;
-    // fixture.detectChanges();
+    fixture = TestBed.createComponent(ConversorComponent);
+    conversor = fixture.componentInstance;
+    fixture.detectChanges();
   });
 
+
+
+  it('Deveria criar o Componente Conversor', ()=> {
+    expect(conversor).toBeTruthy();
+  });
+
+
   it(`# ${ConversorComponent.prototype.getDescricao.name} 
-  Deve retornar a descrição da moeda tendo o código da moeda como parâmetro`, () => {
+  Deveria retornar a descrição da moeda tendo o código da moeda como parâmetro`, () => {
     
-    let desc = conversor.getDescricao('USD');
+    let list = [{
+      code: 'USD', description: 'United States Dollar'}]
+    let desc = conversor.getDescricao('USD', list);
     let retorno = 'United States Dollar'
 
     expect(desc).toBe(retorno);
   });
+
+
+  it(`# ${ConversorComponent.prototype.formatarValor.name} 
+  Deveria retornar o valor em formato de moeda tendo como parâmetros o valor a ser formatado e o código da moeda`,
+  () => {
+
+    let formatar = conversor.formatarValor(1200000, 'BRL')
+
+    let retorno = 'R$ 1.200.000,00'
+    
+    expect(formatar).toBe(retorno);
+
+  });
+
+
 });
