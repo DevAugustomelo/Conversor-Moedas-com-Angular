@@ -20,7 +20,6 @@ import { PrincipalComponent } from './componentes/principal/principal.component'
 import { ConversorComponent } from './componentes/conversor/conversor.component';
 import { HistoricoComponent } from './componentes/historico/historico.component';
 import { TabelaComponent } from './componentes/tabela/tabela.component';
-import { MoedaComponent } from './componentes/moeda/moeda.component';
 import { AcoesComponent } from './componentes/historico/acoes/acoes.component';
 import { SharedModule } from './modules/shared.module';
 
@@ -36,7 +35,6 @@ import { SharedModule } from './modules/shared.module';
     ConversorComponent,
     HistoricoComponent,
     TabelaComponent,
-    MoedaComponent,
     AcoesComponent,
   ],
   imports: [
